@@ -1,0 +1,21 @@
+# Cache and state files
+debug/
+file-history/
+history.jsonl
+plans/
+session-env/
+shell-snapshots/
+stats-cache.json
+statsig/
+telemetry/
+todos/
+transcripts/
+
+# Plugin cache
+plugins/
+
+# Project-specific data
+projects/
+
+# Config files with sensitive data
+config/
