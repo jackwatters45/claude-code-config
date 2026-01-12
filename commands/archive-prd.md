@@ -40,13 +40,43 @@ Archive current PRD and progress to a versioned folder, then reset for next cycl
    Features: X/Y passing
    ```
 
-5. **Reset PRD**
+5. **Extract learnings to CLAUDE.md**
+
+   Review the archived `progress.txt` and `prd.json` for reusable knowledge:
+
+   **Look for:**
+   - Recurring gotchas/blockers across features
+   - "When X, always do Y" patterns
+   - Project-specific conventions discovered
+   - Testing/verification insights
+   - Dependency relationships worth documenting
+   - Tooling quirks or workarounds
+
+   **Add to:**
+   - Project root `CLAUDE.md`
+
+   **Format additions as actionable rules:**
+   ```markdown
+   ## [Category]
+   - When modifying X, also update Y
+   - Tests require Z running first
+   - Use pattern A for feature type B
+   ```
+
+   **Skip if:**
+   - No meaningful patterns emerged
+   - Learnings were already captured in AGENTS.md during development
+   - Notes are too feature-specific to generalize
+
+   Ask user to confirm learnings before adding.
+
+6. **Reset PRD**
    Create new `plans/prd.json`:
    ```json
    []
    ```
 
-6. **Reset progress**
+7. **Reset progress**
    Create new `plans/progress.txt`:
    ```
    Ralph Progress Log
@@ -56,12 +86,15 @@ Archive current PRD and progress to a versioned folder, then reset for next cycl
    --- Session History ---
    ```
 
-7. **Git commit**
+8. **Git commit**
    ```bash
-   git add plans/
-   git commit -m "chore: archive PRD $VERSION"
+   git add plans/ .claude/
+   git commit -m "chore: archive PRD $VERSION
+
+   Includes learnings extracted to CLAUDE.md"
    ```
 
-8. **Report**
+9. **Report**
    - Archive location: `plans/archive/$VERSION/`
+   - Learnings extracted to CLAUDE.md (if any)
    - PRD reset and ready for new features
