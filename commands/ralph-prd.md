@@ -97,25 +97,38 @@ Description: [description]
    - Take a screenshot to confirm the UI renders correctly
    - Not complete until visually verified
 
-## Phase 5: Update AGENTS.md (if applicable)
+## Phase 5: Capture Learnings (if applicable)
 
-Before committing, check if you discovered reusable patterns worth preserving:
+Before committing, check if you discovered reusable patterns worth preserving.
 
-**Update AGENTS.md when you learn:**
+### AGENTS.md — Code-level patterns
+
+**Update when you learn:**
 - "When modifying X, also update Y"
 - "This module uses pattern Z"
 - "Tests require dev server running"
-- Gotchas, conventions, dependencies
+- Code conventions, dependencies
 
-**Don't add:**
+**Where:**
+- Root-level AGENTS.md for project-wide patterns
+- Package-level AGENTS.md for package-specific patterns
+
+### CLAUDE.md — Project-level patterns
+
+**Update when you learn:**
+- Build/tooling quirks (e.g., "Must run X before Y")
+- Environment setup gotchas
+- Testing strategies that work for this project
+- Architectural decisions and rationale
+- Workflow patterns (e.g., "Always verify Z after deploy")
+
+**Where:**
+- Project root `CLAUDE.md`
+
+### Don't add:
 - Story-specific details
 - Temporary notes
 - Info that only matters for this session
-
-**Where to update:**
-- Root-level AGENTS.md for project-wide patterns
-- Package-level AGENTS.md for package-specific patterns
-- Subfolder AGENTS.md for localized patterns (rare)
 
 Use judgment — update where it makes sense for the pattern scope.
 

@@ -7,7 +7,7 @@ PRD-based incremental feature development for Claude Code.
 - `/init-prd` - Initialize PRD structure
 - `/ralph-prd "task"` - Run PRD-aware development loop
 - `/ralph-test` - Run test coverage loop (one test per iteration)
-- `/archive-prd [version]` - Archive completed PRD
+- `/archive-prd [version]` - Archive completed PRD + extract learnings to CLAUDE.md
 
 ## File Structure
 
@@ -52,5 +52,17 @@ Flat JSON array:
 # Edit plans/prd.json with features
 /ralph-prd "implement" # Loop until all pass
 /ralph-test            # Loop until coverage target (default 80%)
-/archive-prd v1.0.0    # Archive, reset for next cycle
+/archive-prd v1.0.0    # Archive, extract learnings, reset
 ```
+
+## Knowledge Capture
+
+Learnings are captured at two levels:
+
+**During development (`/ralph-prd`):**
+- AGENTS.md — reusable patterns discovered while implementing
+- progress.txt — session-specific gotchas and notes
+
+**At archive (`/archive-prd`):**
+- Review progress.txt for recurring patterns
+- Extract generalizable learnings to project root `CLAUDE.md`
