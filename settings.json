@@ -1,7 +1,68 @@
 {
-  "model": "claude-opus-4-5-20251101",
   "permissions": {
-    "allow": [],
-    "deny": []
-  }
+    "allow": [
+      "Bash(cat:*)",
+      "Bash(git checkout:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(for file in Categories/*.md)",
+      "Bash(do sed -i '' 's/\\\\[\\\\[\\\\\\([^]]*\\\\.base\\\\\\)\\\\]\\\\]/![[\\\\1]]/g' \"$file\")",
+      "Bash(done)",
+      "Bash(grep:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(git pull:*)",
+      "Bash(git branch:*)",
+      "WebFetch(domain:silentvoid13.github.io)",
+      "WebSearch",
+      "WebFetch(domain:help.obsidian.md)",
+      "WebFetch(domain:forum.obsidian.md)",
+      "WebFetch(domain:blog.optional.page)",
+      "Bash(xargs -I {} sh -c 'awk \"\"/^---$/,/^---$/\"\" {} | grep -E \"\"^\\\\s*-\\\\s*#\"\" && echo \"\"FILE: {}\"\"')",
+      "Bash(find:*)",
+      "Bash(xargs -0 awk:*)",
+      "Bash(xargs -0 -I {} sh -c ' if head -50 \"\"{}\"\" | grep -q \"\"^---\"\" && ! head -50 \"\"{}\"\" | awk \"\"/^---$/,/^---$/\"\" | grep -q \"\"^tags:\"\"; then echo \"\"{}\"\" fi ')",
+      "WebFetch(domain:github.com)",
+      "Bash(ls:*)",
+      "Bash(for cat in Albums Articles Artists Books Coding Companies Events Evergreen Files GitHub Inspiration Journal Media Meetings Movies People Places \"Podcast episodes\" Podcasts Posts Products Projects Recipes Shows Songs Trips Videos Genre)",
+      "Bash(do)",
+      "Bash(base=\"/Users/jw/obsidian/jacks-vault/Templates/Bases/$cat.base\")",
+      "Bash(if [[ -f \"$base\" ]])",
+      "Bash(then)",
+      "Bash(if grep -q '!file.name.contains\\(\"\"Template\"\"\\)' \"$base\")",
+      "Bash(echo:*)",
+      "Bash(else)",
+      "Bash(fi)",
+      "Bash(if grep -q 'file.name.contains' \"$base\")",
+      "Bash(git fetch:*)",
+      "Bash(gh pr edit 13 --title \"feat: add new categories, folder filters, and template updates\" --body \"$\\(cat <<''EOF''\n## Summary\n- Add `!file.inFolder\\(\"Categories\"\\)` filter to 19 category bases\n- Add new Learning, Tech, and Career categories\n- Various base and template fixes\n\n## New Categories\n\n### Learning\n- For courses, talks, videos, articles, and educational content\n- Properties: url, source, type, status, rating, topics\n\n### Tech\n- For development tools, frameworks, libraries \\(Effect, Cloudflare, Vercel, etc.\\)\n- Properties: url, githubUrl, language, type\n\n### Career\n- For job search resources, interview prep, professional development\n- Properties: type\n\n## Fixes\n- Add Categories folder filter to 19 bases \\(prevents category pages showing in their own listings\\)\n- Fix Coding.base filter syntax\n- Fix Movies.base rating filter and add folder filter\n- Remove unused Monthly Note Template\n\n## Other\n- Add coding resources to Categories/Coding.md\n- Update Movies and Shows category formatting\n- Add Seeds link to Projects category\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\")",
+      "Bash(for file in /Users/jw/obsidian/jacks-vault/Categories/*.md)",
+      "Bash(if ! grep -q \"^tags:\" \"$file\")",
+      "Bash(while read file)",
+      "Bash(if ! head -1 \"$file\")",
+      "Bash(gh issue create:*)",
+      "Bash(git stash:*)"
+    ],
+    "deny": [],
+    "defaultMode": "dontAsk"
+  },
+  "model": "claude-opus-4-5-20251101",
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); user=$(whoami); host=$(hostname -s); dir=$(echo \"$input\" | jq -r '.workspace.current_dir'); branch=$(cd \"$dir\" 2>/dev/null && git -c core.useBuiltinFSMonitor=false rev-parse --abbrev-ref HEAD 2>/dev/null); if [ -n \"$branch\" ]; then printf \"%s@%s %s \\033[33m(%s)\\033[0m\" \"$user\" \"$host\" \"$(basename \"$dir\")\" \"$branch\"; else printf \"%s@%s %s\" \"$user\" \"$host\" \"$(basename \"$dir\")\"; fi"
+  },
+  "enabledPlugins": {
+    "exa-mcp-server@exa-mcp-server": true,
+    "frontend-design@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "feature-dev@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true,
+    "github@claude-plugins-official": true,
+    "code-review@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "ralph-loop@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  },
+  "autoUpdatesChannel": "stable",
+  "minimumVersion": "2.1.3"
 }
