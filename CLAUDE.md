@@ -66,3 +66,8 @@ Learnings are captured at two levels:
 **At archive (`/archive-prd`):**
 - Review progress.txt for recurring patterns
 - Extract generalizable learnings to project root `CLAUDE.md`
+
+## Plan Mode
+
+- Make the plan extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give me a list of unresolved questions to answer, if any.
