@@ -2,11 +2,11 @@
 # ralph.sh - PRD-based story loop with fresh sessions
 #
 # Usage: ralph.sh [max_iterations]
-# Default: 10 iterations
+# Default: 50 iterations
 
 set -e
 
-MAX_ITERATIONS=${1:-10}
+MAX_ITERATIONS=${1:-50}
 PRD_FILE="plans/prd.json"
 PROGRESS_FILE="plans/progress.txt"
 CI_ERRORS_FILE="plans/ci_errors.txt"
