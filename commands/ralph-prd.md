@@ -24,6 +24,11 @@ Each feature in `plans/prd.json` should have:
   "id": "feature-id",
   "category": "auth",
   "description": "Add login form",
+  "acceptanceCriteria": [
+    "User can enter email and password",
+    "Form validates email format",
+    "Successful login redirects to dashboard"
+  ],
   "steps": [
     "Email/password fields exist",
     "Validates email format",
@@ -36,6 +41,7 @@ Each feature in `plans/prd.json` should have:
 ```
 
 **Key fields:**
+- `acceptanceCriteria` — What "done" looks like (optional but recommended)
 - `steps` — Verification steps. Include URLs for UI features (e.g., "Navigate to /login and verify form renders")
 - `dependencies` — Feature IDs that must pass first
 - `passes` — Set to `true` when complete
@@ -45,11 +51,14 @@ Each feature in `plans/prd.json` should have:
 
 ```bash
 cat plans/progress.txt 2>/dev/null || echo "No progress file"
+cat plans/ci_errors.txt 2>/dev/null && echo "^^^ CI errors from last iteration ^^^"
 git log --oneline -5 2>/dev/null || echo "No git history"
 cat plans/prd.json
 ```
 
 Count: total features, passing (`passes: true`), failing (`passes: false`)
+
+**If ci_errors.txt exists:** Previous iteration failed CI. Fix these errors first before implementing new code.
 
 ## Phase 2: Check Completion
 
@@ -160,8 +169,13 @@ Use judgment — update where it makes sense for the pattern scope.
 ### If FAILS:
 
 1. **STOP** after 2-3 attempts
-2. Revert: `git checkout -- .`
-3. Document in plans/progress.txt:
+2. **Keep changes** (do NOT revert)
+3. Save CI errors for next iteration:
+   ```bash
+   bun run typecheck 2>&1 > plans/ci_errors.txt || true
+   bun run test 2>&1 >> plans/ci_errors.txt || true
+   ```
+4. Document in plans/progress.txt:
    ```
    [id] FAILED
    Attempted: [what you tried]
@@ -169,8 +183,18 @@ Use judgment — update where it makes sense for the pattern scope.
    Gotchas: [what you learned from the failure]
    Next: [suggestion for next iteration]
    ```
-4. Do NOT mark as passing
-5. Loop continues to next iteration
+5. Do NOT mark as passing
+6. Loop continues to next iteration (will see ci_errors.txt)
+
+### If BLOCKED (need human help):
+
+1. Output: `STORY_BLOCKED: [reason]`
+2. Document in plans/progress.txt:
+   ```
+   [id] BLOCKED
+   Reason: [why blocked]
+   ```
+3. Skip to next feature (don't exit loop)
 
 ## Phase 7: Loop Control
 
@@ -189,12 +213,13 @@ feat([id]): [brief description]
 | Situation | Action |
 |-----------|--------|
 | Feature passes | `git add -A && git commit` |
-| Feature fails | `git checkout -- .` (revert) |
+| Feature fails | Keep changes, save ci_errors.txt |
+| Feature blocked | Skip to next, log blocker |
 | Context ending | Commit WIP with clear message |
 
-Recovery:
+Recovery (if needed):
 ```bash
-git checkout -- .             # Revert uncommitted
+git checkout -- .             # Revert uncommitted (manual only)
 git log --oneline -5          # Find last good
 ```
 
@@ -203,5 +228,6 @@ git log --oneline -5          # Find last good
 - **ONE feature per iteration**
 - **CI must pass** - typecheck + tests
 - **Commit per feature**
-- **Revert if stuck**
+- **Keep changes on failure** - save ci_errors.txt for next iteration
+- **Skip if blocked** - output `STORY_BLOCKED: reason`, move to next
 - **Document everything** in progress.txt
