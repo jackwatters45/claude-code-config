@@ -41,6 +41,8 @@ Extended capabilities with specialized knowledge and tools.
 | Skill | Description |
 |-------|-------------|
 | `agent-browser` | Browser automation for web testing, form filling, screenshots, data extraction |
+| `debugging` | Systematic debugging workflow: reproduce, isolate, hypothesize, fix, verify |
+| `pdf` | PDF processing: extract text/tables, merge, split, create, OCR |
 | `skill-creator` | Guide for creating Claude Code skills |
 | `visual-feedback` | Visual verification for frontend development using browser automation |
 
@@ -131,6 +133,8 @@ Pre-approved commands for streamlined workflow:
 │   └── ralph.sh
 ├── skills/              # Custom skills
 │   ├── agent-browser/
+│   ├── debugging/
+│   ├── pdf/
 │   ├── skill-creator/
 │   └── visual-feedback/
 ├── CLAUDE.md            # Global instructions
@@ -148,12 +152,17 @@ Features in `plans/prd.json`:
     "id": "auth-001",
     "category": "user-flow",
     "description": "User can log in",
+    "passes": false,
+    "steps": ["Navigate to /login", "Enter credentials", "Verify in browser"],
     "acceptanceCriteria": ["Redirects to dashboard", "Session cookie set"],
-    "steps": ["Navigate to /login", "Enter credentials", "Verify redirect"],
-    "passes": false
+    "nonGoals": ["SSO support", "Password reset"],
+    "successMetrics": ["Login <2s", "0 console errors"],
+    "openQuestions": []
   }
 ]
 ```
+
+**New fields:** `nonGoals` (scope boundaries), `successMetrics` (measurable outcomes), `openQuestions` (unresolved items)
 
 ## Knowledge Capture
 
