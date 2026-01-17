@@ -1,3 +1,29 @@
+# Global Claude Configuration
+
+## Workflow Philosophy (Compound Engineering)
+
+Each unit of work should improve the system for future tasks.
+
+**Time allocation for non-trivial tasks:**
+- **40% Planning** — research patterns, check docs, review commits before coding
+- **20% Work** — incremental commits, continuous validation
+- **20% Review** — quality, security, performance, simplification opportunities
+- **20% Compounding** — document patterns to CLAUDE.md/AGENTS.md
+
+**Key principle:** Favor clarity over abstraction. Document insights continuously. Codify knowledge for reuse.
+
+## Frontend Design (Anti-AI Aesthetics)
+
+When building UIs, avoid generic AI-generated patterns:
+
+**AVOID:** Inter/Arial fonts, blue-gray palettes, symmetric grids, cookie-cutter layouts, predictable spacing
+
+**PREFER:** Bold aesthetic choices, asymmetry, texture/gradients, context-specific character, distinctive typography
+
+For UI features, always include "Verify in browser using visual-feedback" as acceptance criteria.
+
+---
+
 # Ralph PRD System
 
 PRD-based incremental feature development for Claude Code.

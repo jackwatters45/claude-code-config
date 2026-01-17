@@ -63,8 +63,23 @@ The PRD is a flat JSON array. Each feature:
   "steps": [
     "Navigate to /login",
     "Enter valid credentials",
-    "Verify redirect to dashboard"
-  ]
+    "Verify redirect to dashboard",
+    "Verify in browser using visual-feedback"
+  ],
+  "acceptanceCriteria": [
+    "Login completes in <2s",
+    "Session cookie is set",
+    "No console errors"
+  ],
+  "nonGoals": [
+    "SSO/OAuth support",
+    "Password reset flow"
+  ],
+  "successMetrics": [
+    "Login latency <2s",
+    "0 console errors"
+  ],
+  "openQuestions": []
 }
 ```
 
@@ -76,5 +91,16 @@ The PRD is a flat JSON array. Each feature:
 | `category` | Yes | Grouping for organization |
 | `description` | Yes | What this feature does |
 | `passes` | Yes | `false` until verified, then `true` |
-| `steps` | Yes | Verification steps |
+| `steps` | Yes | Verification steps (include "Verify in browser" for UI) |
 | `dependencies` | No | Array of feature IDs that must pass first |
+| `acceptanceCriteria` | No | Specific, verifiable conditions for completion |
+| `nonGoals` | No | Explicit scope boundaries - what this feature does NOT do |
+| `successMetrics` | No | Measurable outcomes (latency, error rates, etc.) |
+| `openQuestions` | No | Unresolved items to address during implementation |
+
+### Writing Good Acceptance Criteria
+
+**Bad (vague):** "Works correctly", "User can login"
+**Good (verifiable):** "Button shows confirmation dialog before deleting", "Redirect to /dashboard within 2s"
+
+For UI features, always include: "Verify in browser using visual-feedback"

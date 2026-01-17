@@ -1,17 +1,4 @@
 {
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/ralph-guard.sh"
-          }
-        ]
-      }
-    ]
-  },
   "permissions": {
     "allow": [
       "Bash(cat:*)",
@@ -41,6 +28,19 @@
     "defaultMode": "default"
   },
   "model": "claude-opus-4-5-20251101",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/ralph-guard.sh"
+          }
+        ]
+      }
+    ]
+  },
   "statusLine": {
     "type": "command",
     "command": "input=$(cat); user=$(whoami); host=$(hostname -s); dir=$(echo \"$input\" | jq -r '.workspace.current_dir'); branch=$(cd \"$dir\" 2>/dev/null && git -c core.useBuiltinFSMonitor=false rev-parse --abbrev-ref HEAD 2>/dev/null); if [ -n \"$branch\" ]; then printf \"%s@%s %s \\033[33m(%s)\\033[0m\" \"$user\" \"$host\" \"$(basename \"$dir\")\" \"$branch\"; else printf \"%s@%s %s\" \"$user\" \"$host\" \"$(basename \"$dir\")\"; fi"
@@ -55,7 +55,8 @@
     "code-review@claude-plugins-official": true,
     "playwright@claude-plugins-official": false,
     "ralph-loop@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true
+    "code-simplifier@claude-plugins-official": true,
+    "compound-engineering@every-marketplace": true
   },
   "autoUpdatesChannel": "stable",
   "minimumVersion": "2.1.3"
