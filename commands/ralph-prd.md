@@ -231,3 +231,41 @@ git log --oneline -5          # Find last good
 - **Keep changes on failure** - save ci_errors.txt for next iteration
 - **Skip if blocked** - output `STORY_BLOCKED: reason`, move to next
 - **Document everything** in progress.txt
+
+## Task Sizing Guide
+
+Each feature should be completable in ONE iteration (single context window). If a feature is too large, break it down in the PRD before starting.
+
+### Right-Sized Tasks (good)
+
+- Add a database column with migration
+- Create a single UI component
+- Implement one API endpoint
+- Add filtering to an existing list
+- Write validation for a form field
+- Add a button that triggers an action
+- Create a single service method
+
+### Too Large (break down)
+
+| Instead of... | Break into... |
+|---------------|---------------|
+| "Add user authentication" | Schema migration, auth service, login API, login UI, session handling |
+| "Implement dashboard" | Each widget/card is a separate feature |
+| "Add CRUD for resource" | Create, Read, Update, Delete as separate features |
+| "Build settings page" | Each settings section is a feature |
+
+### Signs a Task is Too Large
+
+- Touches more than 3-4 files
+- Requires multiple DB migrations
+- Has "and" in the description ("Add X and Y")
+- Estimated at more than ~100 lines of new code
+- Requires both backend and frontend changes
+
+### When You Discover a Task is Too Large
+
+1. STOP implementation
+2. Update PRD: split into smaller features with dependencies
+3. Mark original as `passes: true` (it's now a parent/epic)
+4. Continue with the first sub-feature
