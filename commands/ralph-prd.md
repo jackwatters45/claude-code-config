@@ -145,9 +145,7 @@ Use judgment — update where it makes sense for the pattern scope.
 
 ### If PASSES (typecheck + tests + verification):
 
-1. Update PRD - set `passes: true` for this feature
-
-2. Append to plans/progress.txt:
+1. Append to plans/progress.txt:
    ```
    [id] COMPLETE
    Summary: [what was implemented]
@@ -160,7 +158,7 @@ Use judgment — update where it makes sense for the pattern scope.
    - "Had to do Z first before this would work"
    - Debugging insights for this specific feature
 
-3. Git commit:
+2. Git commit:
    ```bash
    git add -A
    git commit -m "feat([id]): [brief description]"

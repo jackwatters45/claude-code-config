@@ -92,13 +92,13 @@ $(cat "$CI_ERRORS_FILE")"
     if [ "$CI_PASSED" = true ]; then
       echo "CI passed! Committing..."
 
-      # Commit
-      git add -A
-      git commit -m "feat($STORY): $STORY_DESC" || true
-
-      # Update PRD
+      # Update PRD first (before commit so correct state is committed)
       jq "map(if .id == \"$STORY\" then .passes = true else . end)" "$PRD_FILE" > "$PRD_FILE.tmp"
       mv "$PRD_FILE.tmp" "$PRD_FILE"
+
+      # Commit with updated PRD
+      git add -A
+      git commit -m "feat($STORY): $STORY_DESC" || true
 
       # Log progress
       {

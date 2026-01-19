@@ -1,5 +1,17 @@
 # Global Claude Configuration
 
+## Safety Rules
+
+**NEVER use `rm -rf`** — Use `trash` instead. The `trash` CLI moves files to macOS Trash for recovery.
+
+```bash
+# ❌ NEVER
+rm -rf some-directory
+
+# ✅ ALWAYS
+trash some-directory
+```
+
 ## Workflow Philosophy (Compound Engineering)
 
 Each unit of work should improve the system for future tasks.
