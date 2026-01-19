@@ -36,6 +36,37 @@
           {
             "type": "command",
             "command": "~/.claude/hooks/ralph-guard.sh"
+          },
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/no-rm-rf.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/main-branch-guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/main-branch-guard.sh"
+          }
+        ]
+      },
+      {
+        "matcher": "MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/main-branch-guard.sh"
           }
         ]
       }
