@@ -27,7 +27,6 @@
     "deny": [],
     "defaultMode": "default"
   },
-  "model": "claude-opus-4-5-20251101",
   "hooks": {
     "PreToolUse": [
       {
@@ -81,14 +80,16 @@
     "frontend-design@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": true,
-    "github@claude-plugins-official": true,
-    "code-review@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": false,
+    "github@claude-plugins-official": false,
+    "code-review@claude-plugins-official": false,
     "playwright@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": true,
-    "code-simplifier@claude-plugins-official": true,
-    "compound-engineering@every-marketplace": true
+    "ralph-loop@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
+    "compound-engineering@every-marketplace": true,
+    "typescript-lsp@claude-plugins-official": true,
+    "linear@claude-plugins-official": true
   },
-  "autoUpdatesChannel": "stable",
-  "minimumVersion": "2.1.3"
+  "autoUpdatesChannel": "latest",
+  "minimumVersion": "2.1.14"
 }
