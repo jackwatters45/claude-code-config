@@ -17,6 +17,7 @@ trash some-directory
 Each unit of work should improve the system for future tasks.
 
 **Time allocation for non-trivial tasks:**
+
 - **40% Planning** — research patterns, check docs, review commits before coding
 - **20% Work** — incremental commits, continuous validation
 - **20% Review** — quality, security, performance, simplification opportunities
@@ -40,13 +41,6 @@ For UI features, always include "Verify in browser using visual-feedback" as acc
 
 PRD-based incremental feature development for Claude Code.
 
-## Commands
-
-- `/init-prd` - Initialize PRD structure
-- `/ralph-prd "task"` - Run PRD-aware development loop
-- `/ralph-test` - Run test coverage loop (one test per iteration)
-- `/archive-prd [version]` - Archive completed PRD + extract learnings to CLAUDE.md
-
 ## File Structure
 
 ```
@@ -63,6 +57,7 @@ project/
 ## PRD Format
 
 Flat JSON array:
+
 ```json
 [
   {
@@ -83,25 +78,17 @@ Flat JSON array:
 4. **Revert on failure** - `git checkout -- .`
 5. **Document in progress.txt**
 
-## Workflow
-
-```
-/init-prd              # Create plans/prd.json, plans/progress.txt
-# Edit plans/prd.json with features
-/ralph-prd "implement" # Loop until all pass
-/ralph-test            # Loop until coverage target (default 80%)
-/archive-prd v1.0.0    # Archive, extract learnings, reset
-```
-
 ## Knowledge Capture
 
 Learnings are captured at two levels:
 
 **During development (`/ralph-prd`):**
+
 - AGENTS.md — reusable patterns discovered while implementing
 - progress.txt — session-specific gotchas and notes
 
 **At archive (`/archive-prd`):**
+
 - Review progress.txt for recurring patterns
 - Extract generalizable learnings to project root `CLAUDE.md`
 

@@ -21,8 +21,7 @@
       "Bash(if)",
       "Bash(git fetch:*)",
       "Bash(gh issue create:*)",
-      "Bash(git stash:*)",
-      "Bash(gh pr create --title \"Add learning capture to PRD workflow\" --body \"$\\(cat <<''EOF''\n## Summary\n- Add CLAUDE.md as a learning capture target in ralph-prd \\(alongside AGENTS.md\\)\n- Add learning extraction step to archive-prd before resetting\n- Document the two-level knowledge capture workflow\n\n## Changes\n1. **ralph-prd.md**: Phase 5 now captures learnings to both AGENTS.md \\(code-level\\) and CLAUDE.md \\(project-level\\)\n2. **archive-prd.md**: New step 5 reviews progress.txt for patterns and extracts to CLAUDE.md\n3. **CLAUDE.md**: Documents the knowledge capture workflow\n\n## Motivation\nEncapsulate learnings from each PRD loop into the repo so they persist across sessions.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\nEOF\n\\)\")"
+      "Bash(git stash:*)"
     ],
     "deny": [],
     "defaultMode": "default"
@@ -32,10 +31,6 @@
       {
         "matcher": "Bash",
         "hooks": [
-          {
-            "type": "command",
-            "command": "~/.claude/hooks/ralph-guard.sh"
-          },
           {
             "type": "command",
             "command": "~/.claude/hooks/no-rm-rf.sh"
@@ -80,15 +75,8 @@
     "frontend-design@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
     "feature-dev@claude-plugins-official": true,
-    "commit-commands@claude-plugins-official": false,
-    "github@claude-plugins-official": false,
-    "code-review@claude-plugins-official": false,
-    "playwright@claude-plugins-official": false,
-    "ralph-loop@claude-plugins-official": false,
-    "code-simplifier@claude-plugins-official": false,
     "compound-engineering@every-marketplace": true,
-    "typescript-lsp@claude-plugins-official": true,
-    "linear@claude-plugins-official": true
+    "typescript-lsp@claude-plugins-official": true
   },
   "autoUpdatesChannel": "latest",
   "minimumVersion": "2.1.14"

@@ -1,0 +1,65 @@
+{
+  "version": 2,
+  "plugins": {
+    "exa-mcp-server@exa-mcp-server": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/exa-mcp-server/exa-mcp-server/3.1.3",
+        "version": "3.1.3",
+        "installedAt": "2026-01-10T09:07:38.820Z",
+        "lastUpdated": "2026-01-10T09:07:38.820Z",
+        "gitCommitSha": "277a643d5780d5939bc95e9e9e1d0aa9743cf13c"
+      }
+    ],
+    "frontend-design@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/claude-plugins-official/frontend-design/e30768372b41",
+        "version": "e30768372b41",
+        "installedAt": "2026-01-10T13:14:08.311Z",
+        "lastUpdated": "2026-01-21T05:43:06.950Z",
+        "gitCommitSha": "277a643d5780d5939bc95e9e9e1d0aa9743cf13c"
+      }
+    ],
+    "context7@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/claude-plugins-official/context7/e30768372b41",
+        "version": "e30768372b41",
+        "installedAt": "2026-01-10T13:14:08.340Z",
+        "lastUpdated": "2026-01-21T05:43:06.967Z",
+        "gitCommitSha": "277a643d5780d5939bc95e9e9e1d0aa9743cf13c"
+      }
+    ],
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/claude-plugins-official/feature-dev/e30768372b41",
+        "version": "e30768372b41",
+        "installedAt": "2026-01-10T13:14:08.372Z",
+        "lastUpdated": "2026-01-21T05:43:06.957Z",
+        "gitCommitSha": "277a643d5780d5939bc95e9e9e1d0aa9743cf13c"
+      }
+    ],
+    "compound-engineering@every-marketplace": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/every-marketplace/compound-engineering/2.26.4",
+        "version": "2.26.4",
+        "installedAt": "2026-01-16T12:18:40.236Z",
+        "lastUpdated": "2026-01-16T12:18:40.236Z",
+        "gitCommitSha": "7e625e3aab9c5d4dbef9683064604feb83711e39"
+      }
+    ],
+    "typescript-lsp@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/Users/jw/.claude/plugins/cache/claude-plugins-official/typescript-lsp/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-01-20T10:27:29.200Z",
+        "lastUpdated": "2026-01-20T10:27:29.200Z",
+        "gitCommitSha": "96276205880a60fd66bbae981f5ab568e70c4cbf"
+      }
+    ]
+  }
+}

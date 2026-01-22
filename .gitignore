@@ -14,7 +14,10 @@ todos/
 transcripts/
 
 # Plugin cache
-plugins/
+plugins/cache
+plugins/marketplaces
+plugins/repos
+plugins/install-counts-cache.json
 
 # Project-specific data
 projects/

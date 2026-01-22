@@ -1,0 +1,26 @@
+{
+  "claude-plugins-official": {
+    "source": {
+      "source": "github",
+      "repo": "anthropics/claude-plugins-official"
+    },
+    "installLocation": "/Users/jw/.claude/plugins/marketplaces/claude-plugins-official",
+    "lastUpdated": "2026-01-21T06:17:49.773Z"
+  },
+  "exa-mcp-server": {
+    "source": {
+      "source": "github",
+      "repo": "exa-labs/exa-mcp-server"
+    },
+    "installLocation": "/Users/jw/.claude/plugins/marketplaces/exa-mcp-server",
+    "lastUpdated": "2026-01-10T09:07:29.002Z"
+  },
+  "every-marketplace": {
+    "source": {
+      "source": "git",
+      "url": "https://github.com/EveryInc/compound-engineering-plugin.git"
+    },
+    "installLocation": "/Users/jw/.claude/plugins/marketplaces/every-marketplace",
+    "lastUpdated": "2026-01-16T12:18:21.919Z"
+  }
+}
