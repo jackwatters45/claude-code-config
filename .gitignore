@@ -24,3 +24,6 @@ config/
 
 # Credentials
 .credentials.json
+
+# Local settings (machine-specific)
+settings.local.json
