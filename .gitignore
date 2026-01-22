@@ -21,3 +21,6 @@ projects/
 
 # Config files with sensitive data
 config/
+
+# Credentials
+.credentials.json
