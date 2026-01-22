@@ -1,51 +1,12 @@
 #!/bin/bash
 # ralph.sh - PRD-based story loop with fresh sessions
 #
-# Usage: ralph.sh [options]
-#   -n, --max=N      Max iterations (default: 50)
-#   -s, --scope=X    Test scope: wla|pll|nll|mll|msl (default: auto-detect from story ID)
-#   -h, --help       Show this help
+# Usage: ralph.sh [max_iterations]
+# Default: 50 iterations
 
 set -e
 
-# Defaults
-MAX_ITERATIONS=50
-TEST_SCOPE_OVERRIDE=""
-
-# Parse flags
-while [[ $# -gt 0 ]]; do
-  case $1 in
-    -n|--max)
-      MAX_ITERATIONS="$2"
-      shift 2
-      ;;
-    --max=*)
-      MAX_ITERATIONS="${1#*=}"
-      shift
-      ;;
-    -s|--scope)
-      TEST_SCOPE_OVERRIDE="$2"
-      shift 2
-      ;;
-    --scope=*)
-      TEST_SCOPE_OVERRIDE="${1#*=}"
-      shift
-      ;;
-    -h|--help)
-      echo "Usage: ralph.sh [options]"
-      echo "  -n, --max=N      Max iterations (default: 50)"
-      echo "  -s, --scope=X    Test scope: wla|pll|nll|mll|msl (default: auto-detect)"
-      echo "  -h, --help       Show this help"
-      exit 0
-      ;;
-    *)
-      echo "Unknown option: $1"
-      echo "Use --help for usage"
-      exit 1
-      ;;
-  esac
-done
-
+MAX_ITERATIONS=${1:-50}
 PRD_FILE="plans/prd.json"
 PROGRESS_FILE="plans/progress.txt"
 CI_ERRORS_FILE="plans/ci_errors.txt"
@@ -119,36 +80,13 @@ $(cat "$CI_ERRORS_FILE")"
     echo ""
     echo "Story signaled complete. Running CI..."
 
-    # Determine test scope: manual override > auto-detect from story ID > full suite
-    TEST_SCOPE="$TEST_SCOPE_OVERRIDE"
-    if [ -z "$TEST_SCOPE" ]; then
-      TEST_SCOPE=$(echo "$STORY" | grep -oE '^(wla|pll|nll|mll|msl)' || echo "")
-    fi
-
-    # Run CI
+    # Run CI (adjust these commands for your project)
     CI_PASSED=true
     if ! bun run typecheck 2>&1 | tee "$RALPH_DIR/ci-$i.log"; then
       CI_PASSED=false
     fi
-
-    # Scoped or full tests
-    if [ -n "$TEST_SCOPE" ]; then
-      echo "Running scoped tests: test:$TEST_SCOPE"
-      if ! (cd packages/pipeline && bun run test:$TEST_SCOPE) 2>&1 | tee -a "$RALPH_DIR/ci-$i.log"; then
-        CI_PASSED=false
-      fi
-    else
-      # Prefer test:unit if available (skips integration tests), fall back to test
-      if grep -q '"test:unit"' package.json 2>/dev/null; then
-        echo "Running unit tests (test:unit found in package.json)"
-        if ! bun run test:unit 2>&1 | tee -a "$RALPH_DIR/ci-$i.log"; then
-          CI_PASSED=false
-        fi
-      else
-        if ! bun run test 2>&1 | tee -a "$RALPH_DIR/ci-$i.log"; then
-          CI_PASSED=false
-        fi
-      fi
+    if ! bun run test 2>&1 | tee -a "$RALPH_DIR/ci-$i.log"; then
+      CI_PASSED=false
     fi
 
     if [ "$CI_PASSED" = true ]; then
